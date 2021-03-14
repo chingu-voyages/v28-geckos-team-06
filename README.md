@@ -1,70 +1,133 @@
-# Getting Started with Create React App
+## Project Description
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Nutritional Analysis app is a meal breakdown tool that allows the users to get detailed nutritional information of their meals using NLP
+(Natural language processing)
 
-## Available Scripts
+This app is a revamp of the example app from [edamam api](https://www.edamam.com/) providing richer and more user-friendly UI.
 
-In the project directory, you can run:
+Features include
 
-### `npm start`
+- Keying of ingredients with plain English text
+- Getting total calories count based on the ingredients keyed in
+- Getting calories breakdown information such as Protein, Carbs, and Fat
+- Getting refined information related to vitamins, sodium, and sugars
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Tech Stack
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+This application tech stack is build using the following tools
 
-### `npm test`
+- React
+- React hooks
+- Ant Design
+- Scss
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Project Roles
 
-### `npm run build`
+@dev-grrl-japan
+- Product owner
+- UI/UX designer
+- Support developer
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+@LogicUI
+- FrontEnd Developer
+- Scrum master
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+@gunners6518
+- FrontEnd Developer
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Coding Standards
 
-### `npm run eject`
+The project coding standard will use Airbnb style guide and prettier which is enforced by ESLINT more details can be found in the links below
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+[Quick Guide in setting up eslint, airbnb and prettier](https://dev.to/bigyank/a-quick-guide-to-setup-eslint-with-airbnb-and-prettier-3di2)
+[airBnB style guide link](https://github.com/airbnb/javascript)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Git Branching Model & Release Strategy
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Master Branch
 
-## Learn More
+The source code of HEAD always reflects a production-ready-state.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Permanent
+- Protected from deletion
+- Modification from pull request only
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Develop Branch
 
-### Code Splitting
+The source code of the HEAD always reflects a state with the latest delivered development changes for the next release.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- Permanent
+- Protected from deletion
+- Modification by pull request only
 
-### Analyzing the Bundle Size
+### Supporting branch
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- Temporary
+- Should be deleted when merged
 
-### Making a Progressive Web App
+| Types of Supporting Branch | Description                                                                                                        | Branch off from           | Merge back into           | Naming Conversion      | Example                               |
+| -------------------------- | ------------------------------------------------------------------------------------------------------------------ | ------------------------- | ------------------------- | ---------------------- | ------------------------------------- |
+| Feature                    | Used to develop new features                                                                                       | develop                   | develop                   | feature/ticket-summary | feature-recipe-title                  |
+| Bugfix                     | Arise from the necessity act upon an undesired state of development                                                | develop, release branches | develop, release branches | bugfix/ticket-summary  | bugfix-title-does-not-display-clearly |
+| hotfix                     | Hotfix branch arises from the necessity to act immediately upon an undesired state of a live production version.   | master                    | master develop            | hotfix/ticket-summary  | hotfix/login-error                    |
+| Release                    | Release branch supports the preparation of a new production release, reflects the desired state of the new release | develop                   | master, develop           | release/release-number | release/1.0.0                         |
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### Commit Messages
 
-### Advanced Configuration
+Commit messages should follow based on the branch name assigned. E.g Feature/recipe-title.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Any feedback or changes made after a PR is made should edit the existing commit name instead of creating a new commit.
 
-### Deployment
+this can be done using the following command
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+```
+after adding some changes to local git repo..
+git commit --amend ( modifies the existing branch with new changes)
+```
 
-### `npm run build` fails to minify
+### Merge Strategy
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+**Squash, fast-forward the only** is set to the default and only merge strategy. If the source code is out of date with the target branch. reject merge request. Otherwise, combine all commits into one new squash commit on the target branch.
+
+### Overview of the branch model
+
+![image.png](https://images.zenhubusercontent.com/5d7605a095e20f0001868d8c/f101c94e-46fe-47ca-8a7d-eb9895e32fe2)
+
+
+## Pull Request Template
+
+```
+#### What does this Pr do?
+
+This pull request is ...
+
+#### How is this PR implemented
+
+<insert link to task from board > : technical specs in points form
+
+#### Gif or Screenshots (if appropriate)
+
+Provide relevant screenshots for UI related pull request...
+```
+
+### Pull request rules
+
+1. Follow the pull request format
+
+1. Each pull request requires approval from @LogicUI before merging is done.
+
+1. Each pull request requires at least one successful CI build.
+
+1. Ensure your branch is updated with the latest change from develop/master by applying the following steps
+   - Ensure your master branch is up to date by using the command` git pull` on the master branch
+   - If there are no changes on the master branch proceed to raise a PR
+   - If there are changes in your master branch checkout to the branch you want to raise PR and run the command `git rebase master` this will merge the master to your PR branch in a linear sequence without an additional merge commit [more info](https://www.atlassian.com/git/tutorials/merging-vs-rebasing)
+
+
+### Deployment Strategies
+
+Deployment is done using [Netifly](https://www.netlify.com/)
+
+The Master branch will be used for the production build
+Develop branch will be used for development build
